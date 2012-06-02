@@ -22,9 +22,9 @@ class Notes
      */
     protected $_storage;
 
-    function __construct($user = NULL, $pass = NULL, $basefolder = NULL) {
-        if (!is_null($user) && !is_null($pass)) {
-            $this->_imap = new \Zend\Mail\Protocol\Imap('mail.messagingengine.com', NULL, FALSE);
+    function __construct($host = NULL, $user = NULL, $pass = NULL, $basefolder = NULL) {
+        if (!is_null($host) && !is_null($user) && !is_null($pass)) {
+            $this->_imap = new \Zend\Mail\Protocol\Imap($host, NULL, FALSE);
             $this->_imap->login($user, $pass);
             $this->_storage = new Imap($this->_imap);
         }
@@ -61,8 +61,8 @@ class Notes
 
     public function create($msg = '') {
         $uuid = UUID::mint()->string;
-        $subj = strtok($msg, "\n");
-        if (empty(trim($subj))) {
+        $subj = trim(strtok($msg, "\n"));
+        if (empty($subj)) {
             throw new Exception('Empty message creation is not permitted.');
         }
         $body = '';
