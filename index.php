@@ -9,9 +9,12 @@ $app['debug'] = TRUE;
 
 // register the session extension
 $app->register(new Silex\Provider\SessionServiceProvider());
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/views',
+));
 
 $app->get('/', function() use($app) {
-    print_r('Hello, World!');
+    return $app['twig']->render('index.twig', array());
 });
 
 $app->get('/email', function() use($app) {
