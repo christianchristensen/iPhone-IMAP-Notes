@@ -6,6 +6,7 @@
         }
     ],
     "require": {
+        "silex/silex": "1.0.*",
         "zendframework/zend-mail": "2.0.*"
     },
     "autoload": {
