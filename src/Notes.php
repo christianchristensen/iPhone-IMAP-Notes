@@ -62,6 +62,9 @@ class Notes
     public function create($msg = '') {
         $uuid = UUID::mint()->string;
         $subj = strtok($msg, "\n");
+        if (empty(trim($subj))) {
+            throw new Exception('Empty message creation is not permitted.');
+        }
         $body = '';
         foreach (explode("\n", $msg) as $line) {
             if (empty($line)) {
@@ -78,7 +81,6 @@ class Notes
         $message->headers()->addHeaderLine('X-Uniform-Type-Identifier', 'com.apple.mail-note');
         $message->headers()->addHeaderLine('Content-Type', 'text/html');
         // TODO: catch what might go wrong here...
-        print_r($message->toString());
         $this->_storage->appendMessage($message->toString(), NULL, array(Storage::FLAG_SEEN));
         return $uuid;
     }
@@ -86,7 +88,10 @@ class Notes
     public function retrieve($msgid = NULL) {
     }
 
-    public function update($msgid = NULL) {
+    public function update($msgid = NULL, $msg = '') {
+        $uuid = $this->create($msg);
+        $this->delete($msgid);
+        return $uuid;
     }
 
     public function delete($msgid = NULL) {
