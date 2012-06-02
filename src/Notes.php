@@ -37,6 +37,11 @@ class Notes
         }
     }
 
+    function __destruct() {
+        $this->_storage->close();
+        $this->_imap->logout();
+    }
+
     public function index() {
         // TODO: Schema-ize this
         $index = array();
@@ -56,15 +61,15 @@ class Notes
 
     public function create($msg = '') {
         $uuid = UUID::mint()->string;
-        $header = new Headers();
-        $header->addHeaderLine('X-Universally-Unique-Identifier', $uuid);
-        $header->addHeaderLine('X-Uniform-Type-Identifier', 'com.apple.mail-note');
         $message = new Message();
-        $message->setSubject('BLOOM - '.$uuid);
-        $message->setHeaders($header);
-        //$message->setBody($msg);
+        $message->setSubject('BLOOM - '.$uuid)
+        ->setBody($msg)
+        ->addFrom('Notes App');
+//        ->setEncoding("UTF-8");
+        $message->headers()->addHeaderLine('X-Universally-Unique-Identifier', $uuid);
+        $message->headers()->addHeaderLine('X-Uniform-Type-Identifier', 'com.apple.mail-note');
         // TODO: catch what might go wrong here...
-        $this->_storage->appendMessage($message);
+        $this->_storage->appendMessage($message->toString(), NULL, array(Storage::FLAG_SEEN));
         return $uuid;
     }
 
