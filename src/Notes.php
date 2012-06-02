@@ -61,14 +61,24 @@ class Notes
 
     public function create($msg = '') {
         $uuid = UUID::mint()->string;
+        $subj = strtok($msg, "\n");
+        $body = '';
+        foreach (explode("\n", $msg) as $line) {
+            if (empty($line)) {
+                $line = '<br>';
+            }
+            $body .= '<div>' . trim(str_replace("\n", "", $line)) . '</div>';
+        }
         $message = new Message();
-        $message->setSubject('BLOOM - '.$uuid)
-        ->setBody($msg)
-        ->addFrom('Notes App');
-//        ->setEncoding("UTF-8");
+        $message->setSubject($subj)
+        ->setBody($body);
+        //->addFrom('Notes App');
+        //->setEncoding("UTF-8");
         $message->headers()->addHeaderLine('X-Universally-Unique-Identifier', $uuid);
         $message->headers()->addHeaderLine('X-Uniform-Type-Identifier', 'com.apple.mail-note');
+        $message->headers()->addHeaderLine('Content-Type', 'text/html');
         // TODO: catch what might go wrong here...
+        print_r($message->toString());
         $this->_storage->appendMessage($message->toString(), NULL, array(Storage::FLAG_SEEN));
         return $uuid;
     }
