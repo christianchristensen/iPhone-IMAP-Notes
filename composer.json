@@ -6,8 +6,7 @@
         }
     ],
     "require": {
-        "zendframework/zend-mail": "2.0.*",
-        "zendframework/zend-loader": "2.0.*"
+        "zendframework/zend-mail": "2.0.*"
     },
     "autoload": {
         "classmap": ["src"]

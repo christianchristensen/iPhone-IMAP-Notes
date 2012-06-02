@@ -1,10 +1,6 @@
 {
-    "hash": "c8a28477dc22bd84528c4577d57b5552",
+    "hash": "e26ee2a39dbe63dc4f0c3b089d9b42d9",
     "packages": [
-        {
-            "package": "zendframework/zend-loader",
-            "version": "2.0.0-beta4"
-        },
         {
             "package": "zendframework/zend-mail",
             "version": "2.0.0-beta4"
