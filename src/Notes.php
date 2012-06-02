@@ -1,4 +1,8 @@
 <?php
+use Zend\Mail\Headers;
+
+use Zend\Mail\Message;
+
 use Zend\Mail\Storage;
 
 use Zend\Mail\Storage\Imap;
@@ -51,7 +55,17 @@ class Notes
     }
 
     public function create($msg = '') {
-        $uuid = UUID();
+        $uuid = UUID::mint()->string;
+        $header = new Headers();
+        $header->addHeaderLine('X-Universally-Unique-Identifier', $uuid);
+        $header->addHeaderLine('X-Uniform-Type-Identifier', 'com.apple.mail-note');
+        $message = new Message();
+        $message->setSubject('BLOOM - '.$uuid);
+        $message->setHeaders($header);
+        //$message->setBody($msg);
+        // TODO: catch what might go wrong here...
+        $this->_storage->appendMessage($message);
+        return $uuid;
     }
 
     public function retrieve($msgid = NULL) {
