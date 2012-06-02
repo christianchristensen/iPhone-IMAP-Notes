@@ -10,6 +10,10 @@ use Zend\Mail;
 
 class Notes
 {
+    const xUUID = 'X-Universally-Unique-Identifier';
+    const xUType = 'X-Uniform-Type-Identifier';
+    const xUTypeField = 'com.apple.mail-note';
+
     /**
      * IMAP Protocol
      * @var \Zend\Mail\Protocol\Imap
@@ -50,7 +54,7 @@ class Notes
                 $headers = $message->getHeaders();
                 $index[] = array(
                   'num' => $messageNum,
-                  'uuid' => $headers['x-universally-unique-identifier'],
+                  'uuid' => $headers[strtolower(self::xUUID)],
                   'subject' => $message->subject,
                   'body' => $message->getContent(),
                 );
@@ -77,8 +81,8 @@ class Notes
         ->setBody($body);
         //->addFrom('Notes App');
         //->setEncoding("UTF-8");
-        $message->headers()->addHeaderLine('X-Universally-Unique-Identifier', $uuid);
-        $message->headers()->addHeaderLine('X-Uniform-Type-Identifier', 'com.apple.mail-note');
+        $message->headers()->addHeaderLine(self::xUUID, $uuid);
+        $message->headers()->addHeaderLine(self::xUType, self::xUTypeField);
         $message->headers()->addHeaderLine('Content-Type', 'text/html');
         // TODO: catch what might go wrong here...
         $this->_storage->appendMessage($message->toString(), NULL, array(Storage::FLAG_SEEN));
@@ -91,7 +95,7 @@ class Notes
         $headers = $message->getHeaders();
         return array(
             'num' => $messageNum,
-            'uuid' => $headers['x-universally-unique-identifier'],
+            'uuid' => $headers[self::xUUID],
             'subject' => $message->subject,
             'body' => $message->getContent(),
         );
@@ -114,7 +118,7 @@ class Notes
         if (strpos($msgid, '-') && strlen($msgid) > 30) {
             // NOTE: search() is marked as "internal" as it may be unstable
             // http://tools.ietf.org/html/rfc3501#section-6.4.4
-            $search = $this->_imap->search(array('HEADER X-Universally-Unique-Identifier '.$msgid));
+            $search = $this->_imap->search(array('HEADER '.self::xUUID.' '.$msgid));
             return $search[0];
         }
         else {
