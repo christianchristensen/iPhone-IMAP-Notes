@@ -50,15 +50,16 @@ class Notes
         return $index;
     }
 
+    public function create($msg = '') {
+        $uuid = UUID();
+    }
+
     public function retrieve($msgid = NULL) {
     }
 
-    public function create($msg = '') {
+    public function update($msgid = NULL) {
     }
 
     public function delete($msgid = NULL) {
-    }
-
-    public function update($msgid = NULL) {
     }
 }
