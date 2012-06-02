@@ -1,0 +1,21 @@
+{
+    "hash": "ef06eabd876c8b790854e985e1c1dfd2",
+    "packages": [
+        {
+            "package": "zendframework/zend-mail",
+            "version": "2.0.0-beta4"
+        },
+        {
+            "package": "zendframework/zend-mime",
+            "version": "2.0.0-beta4"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
+}
