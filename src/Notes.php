@@ -86,10 +86,16 @@ class Notes
     }
 
     public function retrieve($msgid = NULL) {
-        // NOTE: search() is marked as "internal" as it may be unstable
-        // http://tools.ietf.org/html/rfc3501#section-6.4.4
-        $search = $this->_imap->search(array('HEADER X-Universally-Unique-Identifier '.$msgid));
-        $messageNum = $search[0];
+        // TODO: Better detection of UUID's
+        if (strpos($msgid, '-') && strlen($msgid) > 30) {
+            // NOTE: search() is marked as "internal" as it may be unstable
+            // http://tools.ietf.org/html/rfc3501#section-6.4.4
+            $search = $this->_imap->search(array('HEADER X-Universally-Unique-Identifier '.$msgid));
+            $messageNum = $search[0];
+        }
+        else {
+            $messageNum = $msgid;
+        }
         $message = $this->_storage[$messageNum];
         $headers = $message->getHeaders();
         return array(
