@@ -27,6 +27,24 @@ $app->get('/note', function() use($app) {
     ));
 });
 
+$app->get('/note/{id}', function($id) use($app) {
+    $notes = new Notes('mail.messagingengine.com', 'minenet@airpost.net', 'P@ssw0rd', 'INBOX');
+    // TODO: Move these to tests
+    $message = $notes->retrieve($id);
+
+    return $app['twig']->render('edit.twig', array(
+        'num' => $message['num'],
+        'uuid' => $message['uuid'],
+        'subject' => $message['subject'],
+        'body' => $message['body'],
+    ));
+
+});
+
+$app->post('/note/{id}', function($id) use($app) {
+
+});
+
 $app->get('/email', function() use($app) {
     $app['session']->start();
     $notes = new Notes('mail.messagingengine.com', 'minenet@airpost.net', 'P@ssw0rd', 'INBOX');

@@ -95,7 +95,7 @@ class Notes
         $headers = $message->getHeaders();
         return array(
             'num' => $messageNum,
-            'uuid' => $headers[self::xUUID],
+            'uuid' => $headers[strtolower(self::xUUID)],
             'subject' => $message->subject,
             'body' => $message->getContent(),
         );
