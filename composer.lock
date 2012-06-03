@@ -1,5 +1,5 @@
 {
-    "hash": "94e5841c5fd7585fb8b196306cde6d33",
+    "hash": "98aff2c67145073594b6c58997a8a5c3",
     "packages": [
         {
             "package": "pear-pear/Archive_Tar",
@@ -59,13 +59,13 @@
         {
             "package": "silex/silex",
             "version": "dev-master",
-            "alias-pretty-version": "1.0.x-dev",
-            "alias-version": "1.0.9999999.9999999-dev"
+            "source-reference": "ea5214244a4949aabd0966d984bf68123d1cd772"
         },
         {
             "package": "silex/silex",
             "version": "dev-master",
-            "source-reference": "ea5214244a4949aabd0966d984bf68123d1cd772"
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
         },
         {
             "package": "symfony/event-dispatcher",
@@ -81,13 +81,13 @@
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "d9ef2afd0218415a8c04ea48a2c83bb5b8f0f51c"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "source-reference": "d9ef2afd0218415a8c04ea48a2c83bb5b8f0f51c"
         },
         {
             "package": "symfony/http-kernel",
@@ -125,13 +125,13 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "6d072640c44f1781049afd2d96060c72da80662a"
+            "alias-pretty-version": "1.8.x-dev",
+            "alias-version": "1.8.9999999.9999999-dev"
         },
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "alias-pretty-version": "1.8.x-dev",
-            "alias-version": "1.8.9999999.9999999-dev"
+            "source-reference": "6d072640c44f1781049afd2d96060c72da80662a"
         },
         {
             "package": "zendframework/zend-crypt",
@@ -159,6 +159,14 @@
         },
         {
             "package": "zendframework/zend-stdlib",
+            "version": "2.0.0-beta4"
+        },
+        {
+            "package": "zendframework/zend-uri",
+            "version": "2.0.0-beta4"
+        },
+        {
+            "package": "zendframework/zend-validator",
             "version": "2.0.0-beta4"
         }
     ],
