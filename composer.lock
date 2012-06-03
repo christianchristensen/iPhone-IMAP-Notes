@@ -1,5 +1,5 @@
 {
-    "hash": "49b9e44ad4bbd3eb76ffe5e3d2fa9e92",
+    "hash": "94e5841c5fd7585fb8b196306cde6d33",
     "packages": [
         {
             "package": "pear-pear/Archive_Tar",
@@ -48,13 +48,13 @@
         {
             "package": "pimple/pimple",
             "version": "dev-master",
-            "source-reference": "v1.0.0"
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
         },
         {
             "package": "pimple/pimple",
             "version": "dev-master",
-            "alias-pretty-version": "1.0.x-dev",
-            "alias-version": "1.0.9999999.9999999-dev"
+            "source-reference": "v1.0.0"
         },
         {
             "package": "silex/silex",
@@ -70,24 +70,24 @@
         {
             "package": "symfony/event-dispatcher",
             "version": "dev-master",
-            "source-reference": "30d3f5da80c2aeab15bcdb5a7d448d15bc294b23"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/event-dispatcher",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/http-foundation",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "source-reference": "30d3f5da80c2aeab15bcdb5a7d448d15bc294b23"
         },
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
             "source-reference": "d9ef2afd0218415a8c04ea48a2c83bb5b8f0f51c"
+        },
+        {
+            "package": "symfony/http-foundation",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/http-kernel",
@@ -103,16 +103,10 @@
         {
             "package": "symfony/routing",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/routing",
-            "version": "dev-master",
             "source-reference": "1d5a64f26588d63e3a1235a6ade0d54ae4ab3381"
         },
         {
-            "package": "symfony/twig-bridge",
+            "package": "symfony/routing",
             "version": "dev-master",
             "alias-pretty-version": "2.1.x-dev",
             "alias-version": "2.1.9999999.9999999-dev"
@@ -121,6 +115,12 @@
             "package": "symfony/twig-bridge",
             "version": "dev-master",
             "source-reference": "416d3fa67b10e4076dbabc094f354ca14c9f9d26"
+        },
+        {
+            "package": "symfony/twig-bridge",
+            "version": "dev-master",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "twig/twig",
@@ -134,11 +134,31 @@
             "alias-version": "1.8.9999999.9999999-dev"
         },
         {
+            "package": "zendframework/zend-crypt",
+            "version": "2.0.0-beta4"
+        },
+        {
+            "package": "zendframework/zend-loader",
+            "version": "2.0.0-beta4"
+        },
+        {
             "package": "zendframework/zend-mail",
             "version": "2.0.0-beta4"
         },
         {
+            "package": "zendframework/zend-math",
+            "version": "2.0.0-beta4"
+        },
+        {
             "package": "zendframework/zend-mime",
+            "version": "2.0.0-beta4"
+        },
+        {
+            "package": "zendframework/zend-oauth",
+            "version": "2.0.0-beta4"
+        },
+        {
+            "package": "zendframework/zend-stdlib",
             "version": "2.0.0-beta4"
         }
     ],

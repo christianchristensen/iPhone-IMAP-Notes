@@ -16,7 +16,9 @@
         "silex/silex": "1.0.*",
         "symfony/twig-bridge": "2.1.*",
         "twig/twig": ">=1.8,<2.0-dev",
-        "zendframework/zend-mail": "2.0.*"
+        "zendframework/zend-mail": "2.0.*",
+        "zendframework/zend-oauth": "2.0.*",
+        "zendframework/zend-crypt": "2.0.*"
     },
     "autoload": {
         "classmap": ["src"]
