@@ -109,7 +109,7 @@ class Notes
 
     public function delete($msgid = NULL) {
         $messageNum = $this->getMessageNum($msgid);
-        $this->_storage->setFlags($messageNum, array(Storage::FLAG_DELETED));
+        $this->_storage->setFlags($messageNum, array(Storage::FLAG_DELETED, Storage::FLAG_SEEN));
         return TRUE;
     }
 
