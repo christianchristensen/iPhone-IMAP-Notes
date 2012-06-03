@@ -44,15 +44,15 @@
         <li><a href="/note">Notes</a> <span class="divider">/</span></li>
         <li class="active">{{ subject }}</li>
       </ul>
-      <form class="form-vertical">
+      <form class="form-vertical" action="/note/{{ uuid }}" method="POST">
         <div class="control-group">
           <div class="controls">
             <textarea class="span12" rows="15">{{ body }}</textarea>
           </div>
         </div>
         <div class="form-actions">
-          <a class="btn btn-danger" href="javascript:confirm('Are you sure?');">Delete</a> <a class=
-          "btn btn-success" href="javascript:;">Save</a>
+          <input type="submit" value="Delete" class="btn btn-danger" onClick="return confirm('Are you sure?');"/>
+          <input type="submit" value="Save" class="btn btn-success" />
         </div>
       </form>
     </div>

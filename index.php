@@ -32,13 +32,17 @@ $app->get('/note/{id}', function($id) use($app) {
     // TODO: Move these to tests
     $message = $notes->retrieve($id);
 
+    // TODO: Figure out a better way to process these new lines
+    $body = $message['body'];
+    $body = str_replace('<br>', "\n", $body);
+    $body = str_replace('<div>', '', $body);
+    $body = str_replace('</div>', "\n", $body);
     return $app['twig']->render('edit.twig', array(
         'num' => $message['num'],
         'uuid' => $message['uuid'],
         'subject' => $message['subject'],
-        'body' => $message['body'],
+        'body' => $body,
     ));
-
 });
 
 $app->post('/note/{id}', function($id) use($app) {
