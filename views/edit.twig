@@ -51,7 +51,9 @@
           </div>
         </div>
         <div class="form-actions">
-          <input name="delete" type="submit" value="Delete" class="btn btn-danger" onClick="return confirm('Are you sure?');"/>
+        {% if delete %}
+          <input name="delete" type="submit" value="Delete" class="btn btn-danger" onClick="return confirm('Are you sure?');" />
+        {% endif %}
           <input name="save" type="submit" value="Save" class="btn btn-success" />
         </div>
       </form>

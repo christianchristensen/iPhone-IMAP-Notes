@@ -23,14 +23,26 @@ $app->get('/note', function() use($app) {
     $index = $notes->index();
 
     return $app['twig']->render('note.twig', array(
-      'index' => $index,
+      'index' => array_reverse($index),
     ));
 });
 
 $app->get('/note/{id}', function($id) use($app) {
     $notes = new Notes('mail.messagingengine.com', 'minenet@airpost.net', 'P@ssw0rd', 'INBOX');
+    $add = FALSE;
     // TODO: Move these to tests
-    $message = $notes->retrieve($id);
+    if (strpos($id, 'add') !== FALSE) {
+        $message = array(
+          'num' => '',
+          'uuid' => 'add',
+          'subject' => '',
+          'body' => '',
+        );
+        $add = TRUE;
+    }
+    else {
+        $message = $notes->retrieve($id);
+    }
 
     // TODO: Figure out a better way to process these new lines
     $body = $message['body'];
@@ -42,6 +54,7 @@ $app->get('/note/{id}', function($id) use($app) {
         'uuid' => $message['uuid'],
         'subject' => $message['subject'],
         'body' => $body,
+        'delete' => !$add,
     ));
 });
 
@@ -51,7 +64,12 @@ $app->post('/note/{id}', function(Symfony\Component\HttpFoundation\Request $requ
     $delete = $request->get('delete');
     if (!empty($save)) {
         $body = $request->get('body');
-        $notes->update($id, $body);
+        if (strpos($id, 'add') !== FALSE) {
+            $id = $notes->create($body);
+        }
+        else {
+            $notes->update($id, $body);
+        }
     }
     elseif (!empty($delete)) {
         // TODO: DRY this up
