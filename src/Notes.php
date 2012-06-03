@@ -31,19 +31,26 @@ class Notes
             $this->_imap = new \Zend\Mail\Protocol\Imap($host, $port, $ssl);
             $this->_imap->login($user, $pass);
             $this->_storage = new Imap($this->_imap);
-        }
-        // Get a list of folders, look for Notes; if not then add it and be ready to go!
-        if (!is_null($basefolder)) {
-            $this->_storage->selectFolder($basefolder . '.Notes');
+            // Get a list of folders, look for Notes; if not then add it and be ready to go!
+            if (!is_null($basefolder)) {
+                $this->_storage->selectFolder($basefolder . '.Notes');
+            }
+            else {
+                $this->_storage->selectFolder('Notes');
+            }
         }
         else {
-            $this->_storage->selectFolder('Notes');
+            throw new Exception('IMAP communication is unable to be initialized.');
         }
     }
 
     function __destruct() {
         $this->_storage->close();
         $this->_imap->logout();
+    }
+
+    public function count() {
+        return $this->_storage->count();
     }
 
     public function index() {
