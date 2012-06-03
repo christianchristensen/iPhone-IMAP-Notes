@@ -64,7 +64,7 @@ $app->get('/login', function () use ($app) {
     $oauth->accept(new HTTP_Request2(NULL, NULL, array(
             'ssl_cafile' => 'assets/mozilla.pem',
     )));
-    $oauth->getRequestToken('https://www.google.com/accounts/OAuthGetRequestToken');
+    $oauth->getRequestToken('https://www.google.com/accounts/OAuthGetRequestToken', 'https://c.showoff.io/auth', array('scope'=>implode(' ', array('https://mail.google.com/'))));
     $oauth_token = $oauth->getToken();
     $oauth_token_secret = $oauth->getTokenSecret();
 
@@ -74,7 +74,7 @@ $app->get('/login', function () use ($app) {
     return $app->redirect('https://www.google.com/accounts/OAuthAuthorizeToken?oauth_token=' . $oauth_token);
 });
 
-$app->get('/auth', function() use ($app) {
+$app->get('/auth', function(Symfony\Component\HttpFoundation\Request $request) use ($app) {
     $app['session']->start();
     // check if the user is already logged-in or we're already auth
     if ((null !== $app['session']->get('username')) || (null !== $app['session']->get('auth_secret'))) {
@@ -93,8 +93,9 @@ $app->get('/auth', function() use ($app) {
     )));
     $oauth->setToken($oauth_token);
     $oauth->setTokenSecret($secret);
+    $verifier = $request->get('oauth_verifier');
     try {
-        $oauth->getAccessToken('https://www.google.com/accounts/OAuthGetAccessToken');
+        $oauth->getAccessToken('https://www.google.com/accounts/OAuthGetAccessToken', $verifier, array('scope'=>implode(' ', array('https://mail.google.com/'))));
     } catch (OAuthException $e) {
         $app->abort(401, $e->getMessage());
     }
