@@ -17,6 +17,16 @@ $app->get('/', function() use($app) {
     return $app['twig']->render('index.twig', array());
 });
 
+$app->get('/note', function() use($app) {
+    $notes = new Notes('mail.messagingengine.com', 'minenet@airpost.net', 'P@ssw0rd', 'INBOX');
+    // TODO: Move these to tests
+    $index = $notes->index();
+
+    return $app['twig']->render('note.twig', array(
+      'code' => print_r($index, TRUE),
+    ));
+});
+
 $app->get('/email', function() use($app) {
     $app['session']->start();
     $notes = new Notes('mail.messagingengine.com', 'minenet@airpost.net', 'P@ssw0rd', 'INBOX');
