@@ -68,7 +68,7 @@ $app->post('/note/{id}', function(Symfony\Component\HttpFoundation\Request $requ
             $id = $notes->create($body);
         }
         else {
-            $notes->update($id, $body);
+            $id = $notes->update($id, $body);
         }
     }
     elseif (!empty($delete)) {
