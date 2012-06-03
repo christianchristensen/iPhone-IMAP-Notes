@@ -23,7 +23,7 @@ $app->get('/note', function() use($app) {
     $index = $notes->index();
 
     return $app['twig']->render('note.twig', array(
-      'code' => print_r($index, TRUE),
+      'index' => $index,
     ));
 });
 
