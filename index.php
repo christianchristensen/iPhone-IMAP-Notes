@@ -45,8 +45,26 @@ $app->get('/note/{id}', function($id) use($app) {
     ));
 });
 
-$app->post('/note/{id}', function($id) use($app) {
+$app->post('/note/{id}', function(Symfony\Component\HttpFoundation\Request $request, $id) use($app) {
+    $notes = new Notes('mail.messagingengine.com', 'minenet@airpost.net', 'P@ssw0rd', 'INBOX');
+    $save = $request->get('save');
+    $delete = $request->get('delete');
+    if (!empty($save)) {
+        $body = $request->get('body');
+        $notes->update($id, $body);
+    }
+    elseif (!empty($delete)) {
+        // TODO: DRY this up
+        $notes->delete($id);
+        return $app->redirect('/note');
+    }
+    return $app->redirect('/note/'.$id);
+});
 
+$app->delete('/note/{id}', function($id) use($app) {
+    $notes = new Notes('mail.messagingengine.com', 'minenet@airpost.net', 'P@ssw0rd', 'INBOX');
+    $notes->delete($id);
+    return new Symfony\Component\HttpFoundation\Response('Deleted', 201);
 });
 
 $app->get('/email', function() use($app) {

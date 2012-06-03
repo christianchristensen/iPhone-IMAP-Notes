@@ -47,12 +47,12 @@
       <form class="form-vertical" action="/note/{{ uuid }}" method="POST">
         <div class="control-group">
           <div class="controls">
-            <textarea class="span12" rows="15">{{ body }}</textarea>
+            <textarea name="body" class="span12" rows="15">{{ body }}</textarea>
           </div>
         </div>
         <div class="form-actions">
-          <input type="submit" value="Delete" class="btn btn-danger" onClick="return confirm('Are you sure?');"/>
-          <input type="submit" value="Save" class="btn btn-success" />
+          <input name="delete" type="submit" value="Delete" class="btn btn-danger" onClick="return confirm('Are you sure?');"/>
+          <input name="save" type="submit" value="Save" class="btn btn-success" />
         </div>
       </form>
     </div>
