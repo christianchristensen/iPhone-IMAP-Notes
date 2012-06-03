@@ -3,9 +3,16 @@
         {
             "type": "composer",
             "url": "http://packages.zendframework.com/"
+        },
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
         }
     ],
     "require": {
+        "pear-pear/HTTP_Request2": "*",
+        "pear-pear/HTTP_OAuth": "*",
+        "pear-pear/Log": "*",
         "silex/silex": "1.0.*",
         "symfony/twig-bridge": "2.1.*",
         "twig/twig": ">=1.8,<2.0-dev",
@@ -13,6 +20,17 @@
     },
     "autoload": {
         "classmap": ["src"]
-    }
+    },
+    "include-path": [
+      "vendor/pear-pear/Archive_Tar/",
+      "vendor/pear-pear/Console_Getopt/",
+      "vendor/pear-pear/HTTP_OAuth/",
+      "vendor/pear-pear/HTTP_Request2/",
+      "vendor/pear-pear/Log/",
+      "vendor/pear-pear/Net_URL2/",
+      "vendor/pear-pear/PEAR/PEAR-1.9.4/",
+      "vendor/pear-pear/Structures_Graph/",
+      "vendor/pear-pear/XML_Util/"
+    ]
 }
 
