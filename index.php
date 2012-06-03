@@ -10,8 +10,6 @@ $app['debug'] = TRUE;
 //  Search messages
 //  If a notes folder doesn't exist create it to continue...
 //  OAuth with gmail (limit surface area)
-//  Simple session manager?
-//   - redirects on session
 //  Icon (white) on black navbar top
 
 // register the session extension
