@@ -26,9 +26,9 @@ class Notes
      */
     protected $_storage;
 
-    function __construct($host = NULL, $user = NULL, $pass = NULL, $basefolder = NULL) {
+    function __construct($host = NULL, $user = NULL, $pass = NULL, $basefolder = NULL, $port = NULL, $ssl = FALSE) {
         if (!is_null($host) && !is_null($user) && !is_null($pass)) {
-            $this->_imap = new \Zend\Mail\Protocol\Imap($host, NULL, FALSE);
+            $this->_imap = new \Zend\Mail\Protocol\Imap($host, $port, $ssl);
             $this->_imap->login($user, $pass);
             $this->_storage = new Imap($this->_imap);
         }
