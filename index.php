@@ -8,11 +8,6 @@ $app = new Silex\Application();
 
 // Debug helper provided by Silex
 $app['debug'] = TRUE;
-// TODO:
-//  Search messages
-//  If a notes folder doesn't exist create it to continue...
-//  OAuth with gmail (limit surface area)
-//  Icon (white) on black navbar top
 
 // register the session extension
 $app->register(new Silex\Provider\SessionServiceProvider());
