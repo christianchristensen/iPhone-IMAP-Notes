@@ -120,15 +120,8 @@ $app->get('/req', function () use ($app) {
     )));
     $oauth->setToken($token);
     $oauth->setTokenSecret($secret);
-    // TODO: Push this upstream to SDK lib
+    // TODO: Push use OAuth token to auth IMAP (sasl gmail) requests
     print_r('WE MADE IT!!');
-//     $oauth->sendRequest('https://www.allplayers.com/?q=api/v1/rest/groups/54395c18-f611-11e0-a44b-12313d04fc0f.json', array(), 'GET');
-//     $response = $oauth->getLastResponse();
-//     $json = json_decode($response->getResponse()->getBody());
-
-//     // HACK: set username to group UUID (eventually move this to users/current.json)
-//     $app['session']->set('username', $json->uuid);
-//     return $app->redirect('/');
 });
 
 function notesSessionMgr($app) {
