@@ -142,7 +142,6 @@ function notesSessionMgr($app) {
 
 // ////////// Note app
 $app->get('/note', function() use($app) {
-    // $notes = new Notes('mail.messagingengine.com', 'minenet@airpost.net', 'P@ssw0rd', 'INBOX');
     $notes = notesSessionMgr($app);
     if (strpos(get_class($notes), 'Notes') === FALSE) return $app->redirect('/');
 
