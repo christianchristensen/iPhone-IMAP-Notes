@@ -1,7 +1,4 @@
 <?php
-define('CONS_KEY', 'deadbeef');
-define('CONS_SECRET', 'deadbeef');
-
 require_once __DIR__.'/vendor/autoload.php';
 
 $app = new Silex\Application();
@@ -47,77 +44,6 @@ $app->match('/advauth', function(Symfony\Component\HttpFoundation\Request $reque
 
     return $app['twig']->render('advauth.twig', array());
 })->method('GET|POST');
-
-$app->get('/login', function () use ($app) {
-    $app['session']->start();
-    // check if the user is already logged-in
-    if (null !== ($username = $app['session']->get('user'))) {
-        return $app->redirect('/');
-    }
-
-    $oauth = new HTTP_OAuth_Consumer(CONS_KEY, CONS_SECRET);
-    $oauth->accept(new HTTP_Request2(NULL, NULL, array(
-            'ssl_cafile' => 'assets/mozilla.pem',
-    )));
-    $oauth->getRequestToken('https://www.google.com/accounts/OAuthGetRequestToken', 'https://c.showoff.io/auth', array('scope'=>implode(' ', array('https://mail.google.com/'))));
-    $oauth_token = $oauth->getToken();
-    $oauth_token_secret = $oauth->getTokenSecret();
-
-    $app['session']->set('access_token', $oauth_token);
-    $app['session']->set('access_secret', $oauth_token_secret);
-
-    return $app->redirect('https://www.google.com/accounts/OAuthAuthorizeToken?oauth_token=' . $oauth_token);
-});
-
-$app->get('/auth', function(Symfony\Component\HttpFoundation\Request $request) use ($app) {
-    $app['session']->start();
-    // check if the user is already logged-in or we're already auth
-    if ((null !== $app['session']->get('username')) || (null !== $app['session']->get('auth_secret'))) {
-        return $app->redirect('/');
-    }
-
-    $oauth_token = $app['session']->get('access_token');
-    $secret = $app['session']->get('access_secret');
-    if ($oauth_token == null) {
-        $app->abort(400, 'Invalid token');
-    }
-
-    $oauth = new HTTP_OAuth_Consumer(CONS_KEY, CONS_SECRET);
-    $oauth->accept(new HTTP_Request2(NULL, NULL, array(
-            'ssl_cafile' => 'assets/mozilla.pem',
-    )));
-    $oauth->setToken($oauth_token);
-    $oauth->setTokenSecret($secret);
-    $verifier = $request->get('oauth_verifier');
-    try {
-        $oauth->getAccessToken('https://www.google.com/accounts/OAuthGetAccessToken', $verifier, array('scope'=>implode(' ', array('https://mail.google.com/'))));
-    } catch (OAuthException $e) {
-        $app->abort(401, $e->getMessage());
-    }
-
-    // Set authorized token details for subsequent requests
-    $app['session']->set('auth_token', $oauth->getToken());
-    $app['session']->set('auth_secret', $oauth->getTokenSecret());
-
-    return $app->redirect('/req');
-});
-
-$app->get('/req', function () use ($app) {
-    $app['session']->start();
-    $token = $app['session']->get('auth_token');
-    // check if we have our auth keys
-    if (null === ($secret = $app['session']->get('auth_secret'))) {
-        return $app->redirect('/');
-    }
-    $oauth = new HTTP_OAuth_Consumer(CONS_KEY, CONS_SECRET);
-    $oauth->accept(new HTTP_Request2(NULL, NULL, array(
-            'ssl_cafile' => 'assets/mozilla.pem',
-    )));
-    $oauth->setToken($token);
-    $oauth->setTokenSecret($secret);
-    // TODO: Push use OAuth token to auth IMAP (sasl gmail) requests
-    print_r('WE MADE IT!!');
-});
 
 function notesSessionMgr($app) {
     $app['session']->start();

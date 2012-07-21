@@ -1,51 +1,7 @@
 {
-    "hash": "98aff2c67145073594b6c58997a8a5c3",
+    "hash": "f39267076f28ed0bcd32d05ac5d221d0",
     "packages": [
         {
-            "package": "pear-pear/Archive_Tar",
-            "version": "1.3.10"
-        },
-        {
-            "package": "pear-pear/Console_Getopt",
-            "version": "1.3.1"
-        },
-        {
-            "package": "pear-pear/HTTP_OAuth",
-            "version": "0.2.3"
-        },
-        {
-            "package": "pear-pear/HTTP_Request2",
-            "version": "2.1.1"
-        },
-        {
-            "package": "pear-pear/Log",
-            "version": "1.12.7"
-        },
-        {
-            "package": "pear-pear/Net_URL2",
-            "version": "2.0.0"
-        },
-        {
-            "package": "pear-pear/PEAR",
-            "version": "1.9.4"
-        },
-        {
-            "package": "pear-pear/PEAR_Frontend_Gtk",
-            "version": "0.4.0"
-        },
-        {
-            "package": "pear-pear/PEAR_Frontend_Web",
-            "version": "0.4"
-        },
-        {
-            "package": "pear-pear/Structures_Graph",
-            "version": "1.0.4"
-        },
-        {
-            "package": "pear-pear/XML_Util",
-            "version": "1.2.1"
-        },
-        {
             "package": "pimple/pimple",
             "version": "dev-master",
             "alias-pretty-version": "1.0.x-dev",
@@ -54,18 +10,20 @@
         {
             "package": "pimple/pimple",
             "version": "dev-master",
-            "source-reference": "v1.0.0"
-        },
-        {
-            "package": "silex/silex",
-            "version": "dev-master",
-            "source-reference": "ea5214244a4949aabd0966d984bf68123d1cd772"
+            "source-reference": "d2cfa2f02f50abef65c238747c753a5f6786f6be",
+            "commit-date": "1341139100"
         },
         {
             "package": "silex/silex",
             "version": "dev-master",
             "alias-pretty-version": "1.0.x-dev",
             "alias-version": "1.0.9999999.9999999-dev"
+        },
+        {
+            "package": "silex/silex",
+            "version": "dev-master",
+            "source-reference": "4bd46b806583e4f6467bba3696dbdf953431c630",
+            "commit-date": "1342760935"
         },
         {
             "package": "symfony/event-dispatcher",
@@ -76,7 +34,8 @@
         {
             "package": "symfony/event-dispatcher",
             "version": "dev-master",
-            "source-reference": "30d3f5da80c2aeab15bcdb5a7d448d15bc294b23"
+            "source-reference": "451e0befb42a5552d4e143edcb74e3b4a9733bea",
+            "commit-date": "1342739894"
         },
         {
             "package": "symfony/http-foundation",
@@ -87,12 +46,8 @@
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "d9ef2afd0218415a8c04ea48a2c83bb5b8f0f51c"
-        },
-        {
-            "package": "symfony/http-kernel",
-            "version": "dev-master",
-            "source-reference": "a9dbd268659d19eabcc8285ca4622b232f55aa91"
+            "source-reference": "06d1636d4ef409cefdf5f987573d76898916c0c8",
+            "commit-date": "1342762453"
         },
         {
             "package": "symfony/http-kernel",
@@ -101,9 +56,10 @@
             "alias-version": "2.1.9999999.9999999-dev"
         },
         {
-            "package": "symfony/routing",
+            "package": "symfony/http-kernel",
             "version": "dev-master",
-            "source-reference": "1d5a64f26588d63e3a1235a6ade0d54ae4ab3381"
+            "source-reference": "507618b0f3ffb626c81ffc7eda73e4d4f1b7b51a",
+            "commit-date": "1342600793"
         },
         {
             "package": "symfony/routing",
@@ -112,9 +68,10 @@
             "alias-version": "2.1.9999999.9999999-dev"
         },
         {
-            "package": "symfony/twig-bridge",
+            "package": "symfony/routing",
             "version": "dev-master",
-            "source-reference": "416d3fa67b10e4076dbabc094f354ca14c9f9d26"
+            "source-reference": "3630f2d08515bbad980c0d654433b6689cf460a2",
+            "commit-date": "1342708743"
         },
         {
             "package": "symfony/twig-bridge",
@@ -123,42 +80,29 @@
             "alias-version": "2.1.9999999.9999999-dev"
         },
         {
+            "package": "symfony/twig-bridge",
+            "version": "dev-master",
+            "source-reference": "da5cc8681e50087b5d4495e3b5f16bc87ac0a72b",
+            "commit-date": "1342598932"
+        },
+        {
             "package": "twig/twig",
             "version": "dev-master",
-            "alias-pretty-version": "1.8.x-dev",
-            "alias-version": "1.8.9999999.9999999-dev"
+            "alias-pretty-version": "1.9.x-dev",
+            "alias-version": "1.9.9999999.9999999-dev"
         },
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "6d072640c44f1781049afd2d96060c72da80662a"
-        },
-        {
-            "package": "zendframework/zend-crypt",
-            "version": "2.0.0-beta4"
-        },
-        {
-            "package": "zendframework/zend-loader",
-            "version": "2.0.0-beta4"
+            "source-reference": "8a84838798e45424c5fe2d87149db6855ae037bf",
+            "commit-date": "1342788098"
         },
         {
             "package": "zendframework/zend-mail",
             "version": "2.0.0-beta4"
         },
         {
-            "package": "zendframework/zend-math",
-            "version": "2.0.0-beta4"
-        },
-        {
             "package": "zendframework/zend-mime",
-            "version": "2.0.0-beta4"
-        },
-        {
-            "package": "zendframework/zend-oauth",
-            "version": "2.0.0-beta4"
-        },
-        {
-            "package": "zendframework/zend-stdlib",
             "version": "2.0.0-beta4"
         },
         {
